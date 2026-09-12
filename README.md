@@ -9,8 +9,9 @@ Run `npm install`, then `npm run dev`. Open the local address printed by the ser
 ## Content and assets
 
 - `app/page.tsx`: landing page content and section links.
-- `app/globals.css`: responsive layout and brand colors.
+- `app/globals.css`: responsive layout, brand colors, and animations. All motion is skipped for visitors who prefer reduced motion.
 - `app/layout.tsx`: page metadata and font loading.
+- `app/scroll-reveal.tsx`: reveals the children of any element marked `data-reveal` as they scroll into view, and resets them after they leave through the bottom of the screen so they replay.
 - `public/homewise-logo.png`: original supplied symbol.
 - `public/homewise-wordmark.png`: original supplied full logo.
 

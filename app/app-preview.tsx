@@ -2,7 +2,7 @@
 
 import { Check, ChevronRight, FolderOpen, Home, Ruler } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type PreviewScreen = 'plan' | 'choices' | 'estimate' | 'projects';
 
@@ -139,16 +139,38 @@ function AppScreen({ screen }: { screen: PreviewScreen }) {
 }
 
 export function AppPreview({ label, screen, delay = 1500 }: { label: string; screen: PreviewScreen; delay?: number }) {
+  const phoneRef = useRef<HTMLElement>(null);
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
+    const phone = phoneRef.current;
+    if (!phone) return;
+
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const timer = window.setTimeout(() => setStarted(true), reducedMotion ? 0 : delay);
-    return () => window.clearTimeout(timer);
+    let timer: number | undefined;
+    // The watched area stretches up by the page height, so a phone counts as seen once scrolled past and only
+    // dropping below the screen, even in one jump, resets the launch to replay on the way back down.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        window.clearTimeout(timer);
+        if (entries.at(-1)?.isIntersecting) {
+          timer = window.setTimeout(() => setStarted(true), reducedMotion ? 0 : delay);
+        } else {
+          setStarted(false);
+        }
+      },
+      { rootMargin: `${document.documentElement.scrollHeight}px 0px 0px 0px` },
+    );
+
+    observer.observe(phone);
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(timer);
+    };
   }, [delay]);
 
   return (
-    <figure className="phone" data-started={started ? 'true' : 'false'} aria-label={`${label}: HomeWise splash screen followed by a sample ${screenNames[screen]} screen`}>
+    <figure ref={phoneRef} className="phone" data-started={started ? 'true' : 'false'} aria-label={`${label}: HomeWise splash screen followed by a sample ${screenNames[screen]} screen`}>
       <div className="phone-screen">
         <div className="app-splash" aria-hidden="true">
           <Image src="/homewise-wordmark.png" alt="" width={156} height={52} priority />
