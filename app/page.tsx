@@ -1,6 +1,8 @@
 import { ArrowDown, ArrowRight, Check, ChevronRight, Calculator, Layers3, Ruler, HardHat, Bookmark, SlidersHorizontal } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { AppPreview } from './app-preview';
+import { SiteHeader } from './site-header';
 
 const features = [
   { icon: Ruler, title: 'Start with your space.', text: 'Set your house dimensions and arrange rooms around the way you want to live.', tone: 'orange' },
@@ -8,18 +10,10 @@ const features = [
   { icon: Calculator, title: 'See the bigger picture.', text: 'Bring material quantities, cost ranges, and labor allowances together in one estimate.', tone: 'orange' },
 ];
 
-function Phone({ label }: { label: string }) {
-  return <figure className="phone" aria-label={`${label} — blank app screenshot placeholder`}><div className="phone-screen"><span className="phone-camera" /><span className="phone-home" /></div></figure>;
-}
-
 export default function Home() {
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
-    <header className="site-header shell">
-      <Link className="brand" href="/" aria-label="HomeWise home"><Image src="/homewise-wordmark.png" alt="HomeWise" width={186} height={62} priority /></Link>
-      <nav aria-label="Main navigation"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#about">About</a></nav>
-      <a href="#features" className="pill-button nav-button">Explore the app <ArrowRight size={17} aria-hidden="true" /></a>
-    </header>
+    <SiteHeader />
     <main id="main">
       <section className="hero shell" aria-labelledby="hero-title">
         <div className="eyebrow"><span className="status-dot" /> BIG IDEAS. THOUGHTFUL BEGINNINGS.</div>
@@ -30,19 +24,19 @@ export default function Home() {
         <div className="phone-stage">
           <div className="stage-wash" aria-hidden="true" />
           <div className="stage-label label-left"><Ruler size={20} aria-hidden="true" /><span>A space<br /><strong>that fits you.</strong></span></div>
-          <div className="hero-phone phone-left"><Phone label="Home planning" /><span className="phone-caption">01 <span>Plan your space</span></span></div>
-          <div className="hero-phone phone-center"><Phone label="Project features" /><span className="phone-caption">02 <span>Choose the details</span></span></div>
-          <div className="hero-phone phone-right"><Phone label="Cost estimate" /><span className="phone-caption">03 <span>Know your estimate</span></span></div>
+          <div className="hero-phone phone-left"><AppPreview label="Home planning" screen="plan" delay={1150} /><span className="phone-caption">01 <span>Plan your space</span></span></div>
+          <div className="hero-phone phone-center"><AppPreview label="Project features" screen="choices" delay={1450} /><span className="phone-caption">02 <span>Choose the details</span></span></div>
+          <div className="hero-phone phone-right"><AppPreview label="Cost estimate" screen="estimate" delay={1750} /><span className="phone-caption">03 <span>Know your estimate</span></span></div>
           <div className="stage-label label-right"><Calculator size={20} aria-hidden="true" /><span>A budget<br /><strong>you can explore.</strong></span></div>
         </div>
-        <p className="preview-note">App previews coming soon.</p>
+        <p className="preview-note">Live sample screens shown with illustrative project data.</p>
       </section>
       <section className="features shell section" id="features" aria-labelledby="features-title">
         <div className="section-heading"><span className="eyebrow">LESS GUESSWORK. MORE CLARITY.</span><h2 id="features-title">Good plans start with<br /><span>the right perspective.</span></h2><p>A simpler way to explore what goes into your home,<br className="desktop-break" /> before you start building it.</p></div>
         <div className="feature-grid">{features.map(({ icon: Icon, title, text, tone }, index) => <article className={`feature-card ${tone}`} key={title}><div className="card-top"><span className="feature-icon"><Icon size={27} strokeWidth={1.65} aria-hidden="true" /></span><span className="card-number">0{index + 1}</span></div><h3>{title}</h3><p>{text}</p></article>)}</div>
       </section>
       <section className="detail-section shell section" aria-labelledby="details-title">
-        <div className="detail-visual"><span className="visual-label"><SlidersHorizontal size={17} aria-hidden="true" /> YOUR HOME, YOUR CHOICES</span><Phone label="Material and finish selections" /><span className="visual-footnote">Every detail adds up.</span></div>
+        <div className="detail-visual"><span className="visual-label"><SlidersHorizontal size={17} aria-hidden="true" /> YOUR HOME, YOUR CHOICES</span><AppPreview label="Saved HomeWise project" screen="projects" delay={900} /><span className="visual-footnote">Every detail adds up.</span></div>
         <div className="detail-copy"><span className="eyebrow">THE DETAILS MAKE THE DIFFERENCE</span><h2 id="details-title">Think it through.<br /><span>One choice at a time.</span></h2><p>Big decisions feel more manageable when you can break them down. Explore the parts of your home and see how your choices shape the estimate.</p><ul className="benefit-list"><li><Layers3 aria-hidden="true" /><div><h3>Materials and finishes</h3><p>Choose your structure, roofing, and finishing details.</p></div></li><li><HardHat aria-hidden="true" /><div><h3>Costs with context</h3><p>Review material ranges alongside a labor allowance.</p></div></li><li><Bookmark aria-hidden="true" /><div><h3>Your plans, kept together</h3><p>Save projects to your account and revisit your estimates.</p></div></li></ul><a className="text-link orange-link" href="#how-it-works">Find your starting point <ArrowRight size={18} aria-hidden="true" /></a></div>
       </section>
       <section className="how-section section" id="how-it-works" aria-labelledby="how-title"><div className="shell"><div className="section-heading"><span className="eyebrow">FROM “WHAT IF” TO “WHAT’S NEXT”</span><h2 id="how-title">A few steps.<br /><span>A clearer starting point.</span></h2></div><ol className="steps"><li><span className="step-number">1</span><h3>Picture your home</h3><p>Choose a house type, enter dimensions, and plan your rooms.</p><ChevronRight className="step-arrow" aria-hidden="true" /></li><li><span className="step-number">2</span><h3>Work out the details</h3><p>Select your roof, openings, finishes, and home services.</p><ChevronRight className="step-arrow" aria-hidden="true" /></li><li><span className="step-number">3</span><h3>Explore your estimate</h3><p>Review quantities and cost ranges, then save your project.</p></li></ol></div></section>
