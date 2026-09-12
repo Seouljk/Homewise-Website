@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://homewise-home-planning.bloomy-panda-5146.chatgpt.site'),
+  metadataBase: new URL('https://homewise.khayll-labs.com'),
   title: 'HomeWise — Your dream home. A wiser start.',
   description: 'Plan your one-storey home with HomeWise. Explore room dimensions, material choices, quantities, and preliminary construction cost estimates in one place.',
   icons: { icon: '/favicon.png', apple: '/homewise-logo.png' },
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><head><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" /><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;650;700;750;800;900&display=swap" rel="stylesheet" /></head><body>{children}</body></html>;
+  return <html lang="en"><body>{children}</body></html>;
 }

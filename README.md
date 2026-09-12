@@ -4,7 +4,7 @@ An independent, responsive website for the HomeWise mobile app. The white canvas
 
 ## Local development
 
-Run `npm install`, then `npm run dev`. Open the local address printed by the server. Run `npm run build` for a production build.
+Run `npm install`, then `npm run dev`. Open the local address printed by the server. Run `npm run build` for a production build. Production is hosted on Vercel at `https://homewise.khayll-labs.com`.
 
 ## Content and assets
 
@@ -16,4 +16,4 @@ Run `npm install`, then `npm run dev`. Open the local address printed by the ser
 
 All four app screen areas are intentionally blank. Replace the contents of the `Phone` component with real app screenshots when ready. Labels remain outside the frames. There are no fabricated store links, testimonials, pricing plans, or signup forms.
 
-The site does not require database credentials. Navigation links scroll to the corresponding page sections. Google Fonts has a system-font fallback.
+The site does not require database credentials. Navigation links scroll to the corresponding page sections. Google Fonts has a system-font fallback. The project uses standard Next.js so Vercel can build each update pushed to GitHub.

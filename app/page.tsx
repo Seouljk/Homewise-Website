@@ -1,4 +1,6 @@
 import { ArrowDown, ArrowRight, Check, ChevronRight, Calculator, Layers3, Ruler, HardHat, Bookmark, SlidersHorizontal } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const features = [
   { icon: Ruler, title: 'Start with your space.', text: 'Set your house dimensions and arrange rooms around the way you want to live.', tone: 'orange' },
@@ -7,14 +9,14 @@ const features = [
 ];
 
 function Phone({ label }: { label: string }) {
-  return <div className="phone" role="img" aria-label={`${label} — blank app screenshot placeholder`}><div className="phone-screen"><span className="phone-camera" /><span className="phone-home" /></div></div>;
+  return <figure className="phone" aria-label={`${label} — blank app screenshot placeholder`}><div className="phone-screen"><span className="phone-camera" /><span className="phone-home" /></div></figure>;
 }
 
 export default function Home() {
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className="site-header shell">
-      <a className="brand" href="#" aria-label="HomeWise home"><img src="/homewise-wordmark.png" alt="HomeWise" width="186" height="62" /></a>
+      <Link className="brand" href="/" aria-label="HomeWise home"><Image src="/homewise-wordmark.png" alt="HomeWise" width={186} height={62} priority /></Link>
       <nav aria-label="Main navigation"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#about">About</a></nav>
       <a href="#features" className="pill-button nav-button">Explore the app <ArrowRight size={17} aria-hidden="true" /></a>
     </header>
@@ -44,8 +46,8 @@ export default function Home() {
         <div className="detail-copy"><span className="eyebrow">THE DETAILS MAKE THE DIFFERENCE</span><h2 id="details-title">Think it through.<br /><span>One choice at a time.</span></h2><p>Big decisions feel more manageable when you can break them down. Explore the parts of your home and see how your choices shape the estimate.</p><ul className="benefit-list"><li><Layers3 aria-hidden="true" /><div><h3>Materials and finishes</h3><p>Choose your structure, roofing, and finishing details.</p></div></li><li><HardHat aria-hidden="true" /><div><h3>Costs with context</h3><p>Review material ranges alongside a labor allowance.</p></div></li><li><Bookmark aria-hidden="true" /><div><h3>Your plans, kept together</h3><p>Save projects to your account and revisit your estimates.</p></div></li></ul><a className="text-link orange-link" href="#how-it-works">Find your starting point <ArrowRight size={18} aria-hidden="true" /></a></div>
       </section>
       <section className="how-section section" id="how-it-works" aria-labelledby="how-title"><div className="shell"><div className="section-heading"><span className="eyebrow">FROM “WHAT IF” TO “WHAT’S NEXT”</span><h2 id="how-title">A few steps.<br /><span>A clearer starting point.</span></h2></div><ol className="steps"><li><span className="step-number">1</span><h3>Picture your home</h3><p>Choose a house type, enter dimensions, and plan your rooms.</p><ChevronRight className="step-arrow" aria-hidden="true" /></li><li><span className="step-number">2</span><h3>Work out the details</h3><p>Select your roof, openings, finishes, and home services.</p><ChevronRight className="step-arrow" aria-hidden="true" /></li><li><span className="step-number">3</span><h3>Explore your estimate</h3><p>Review quantities and cost ranges, then save your project.</p></li></ol></div></section>
-      <section className="about-section shell section" id="about" aria-labelledby="about-title"><div className="about-logo"><img src="/homewise-logo.png" alt="" width="82" height="86" loading="lazy" /></div><span className="eyebrow">BUILT FOR THE BEGINNING</span><h2 id="about-title">Your next chapter.<br /><span>A little more considered.</span></h2><p>HomeWise helps homeowners, students, and early-stage planners explore the possibilities of a one-storey home in the Philippines.</p><a className="pill-button" href="#hero-title">Back to the beginning <ArrowRight size={18} aria-hidden="true" /></a><div className="scope-note"><HardHat size={20} aria-hidden="true" /><p>Start with an estimate. Build with a professional.<br /><span>HomeWise provides preliminary estimates for one-storey homes on flat sites with standard soil and wind assumptions. Review your plans, prices, and site requirements with qualified professionals before construction.</span></p></div></section>
+      <section className="about-section shell section" id="about" aria-labelledby="about-title"><div className="about-logo"><Image src="/homewise-logo.png" alt="" width={82} height={86} /></div><span className="eyebrow">BUILT FOR THE BEGINNING</span><h2 id="about-title">Your next chapter.<br /><span>A little more considered.</span></h2><p>HomeWise helps homeowners, students, and early-stage planners explore the possibilities of a one-storey home in the Philippines.</p><a className="pill-button" href="#hero-title">Back to the beginning <ArrowRight size={18} aria-hidden="true" /></a><div className="scope-note"><HardHat size={20} aria-hidden="true" /><p>Start with an estimate. Build with a professional.<br /><span>HomeWise provides preliminary estimates for one-storey homes on flat sites with standard soil and wind assumptions. Review your plans, prices, and site requirements with qualified professionals before construction.</span></p></div></section>
     </main>
-    <footer className="site-footer shell"><div className="footer-brand"><a href="#" aria-label="HomeWise home"><img src="/homewise-wordmark.png" alt="HomeWise" width="156" height="52" loading="lazy" /></a><span>A wiser start to a place of your own.</span></div><nav aria-label="Footer navigation"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#about">About HomeWise</a></nav><div className="footer-bottom"><span>© {new Date().getFullYear()} HomeWise</span><span>Thoughtful planning. Better beginnings.</span></div></footer>
+    <footer className="site-footer shell"><div className="footer-brand"><Link href="/" aria-label="HomeWise home"><Image src="/homewise-wordmark.png" alt="HomeWise" width={156} height={52} /></Link><span>A wiser start to a place of your own.</span></div><nav aria-label="Footer navigation"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#about">About HomeWise</a></nav><div className="footer-bottom"><span>© {new Date().getFullYear()} HomeWise</span><span>Thoughtful planning. Better beginnings.</span></div></footer>
   </>;
 }
