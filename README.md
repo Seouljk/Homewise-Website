@@ -4,13 +4,13 @@ An independent, responsive website for the HomeWise mobile app. The white canvas
 
 ## Local development
 
-Run `npm install`, then `npm run dev`. Open the local address printed by the server. Run `npm run build` for a production build. Production is hosted on Vercel at `https://homewise.khayll-labs.com`.
+Run `npm install`, then `npm run dev`. Open the local address printed by the server. Run `npm run build` for a production build. Production is hosted on Vercel at `https://homewise.khayll-labs.com`. `next.config.ts` turns off Turbopack's build cache, because a cache restored by Vercel once deployed an out-of-date stylesheet.
 
 ## Content and assets
 
 - `app/page.tsx`: landing page content and section links.
 - `app/globals.css`: responsive layout, brand colors, and animations. All motion is skipped for visitors who prefer reduced motion.
-- `app/layout.tsx`: page metadata and font loading.
+- `app/layout.tsx`: page metadata, font loading, and the Google Analytics tag (`G-QF35HEZTVE`), which only loads in production builds.
 - `app/scroll-reveal.tsx`: reveals the children of any element marked `data-reveal` as they scroll into view, and resets them after they leave through the bottom of the screen so they replay.
 - `public/homewise-logo.png`: original supplied symbol.
 - `public/homewise-wordmark.png`: original supplied full logo.
