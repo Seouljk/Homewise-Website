@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import logo from './images/homewise-logo.webp';
 
 export function SiteHeader() {
   const [hidden, setHidden] = useState(false);
@@ -31,7 +32,7 @@ export function SiteHeader() {
   return (
     <header className="site-header shell" data-hidden={hidden ? 'true' : 'false'}>
       <Link className="brand" href="/" aria-label="HomeWise home">
-        <Image src="/homewise-logo.png" alt="" width={52} height={52} priority />
+        <Image src={logo} alt="" width={52} height={52} loading="eager" unoptimized />
       </Link>
       <nav aria-label="Main navigation">
         <a href="#features">Features</a>

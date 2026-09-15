@@ -3,6 +3,8 @@
 import { Check, ChevronRight, FolderOpen, Home, Ruler } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import logo from './images/homewise-logo.webp';
+import wordmark from './images/homewise-wordmark.webp';
 
 type PreviewScreen = 'plan' | 'choices' | 'estimate' | 'projects';
 
@@ -16,7 +18,7 @@ const screenNames: Record<PreviewScreen, string> = {
 function ScreenHeader({ eyebrow, title, step }: { eyebrow: string; title: string; step?: string }) {
   return (
     <div className="app-topbar">
-      <Image className="app-brand-mark" src="/homewise-logo.png" alt="" width={30} height={30} />
+      <Image className="app-brand-mark" src={logo} alt="" width={30} height={30} unoptimized />
       <div>
         <span className="app-top-eyebrow">{eyebrow}</span>
         <strong>{title}</strong>
@@ -173,7 +175,7 @@ export function AppPreview({ label, screen, delay = 1500 }: { label: string; scr
     <figure ref={phoneRef} className="phone" data-started={started ? 'true' : 'false'} aria-label={`${label}: HomeWise splash screen followed by a sample ${screenNames[screen]} screen`}>
       <div className="phone-screen">
         <div className="app-splash" aria-hidden="true">
-          <Image src="/homewise-wordmark.png" alt="" width={156} height={52} priority />
+          <Image src={wordmark} alt="" width={156} height={52} preload unoptimized />
           <span>One-storey home estimator</span>
           <i />
         </div>
