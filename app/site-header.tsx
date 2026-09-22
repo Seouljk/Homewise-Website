@@ -35,13 +35,13 @@ export function SiteHeader() {
         <Image src={logo} alt="" width={52} height={52} loading="eager" unoptimized />
       </Link>
       <nav aria-label="Main navigation">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#about">About</a>
+        <Link href="/#features">Features</Link>
+        <Link href="/#how-it-works">How it works</Link>
+        <Link href="/#about">About</Link>
       </nav>
-      <a href="#features" className="pill-button nav-button">
+      <Link href="/#features" className="pill-button nav-button">
         Explore the app <ArrowRight size={17} aria-hidden="true" />
-      </a>
+      </Link>
     </header>
   );
 }

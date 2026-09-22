@@ -11,6 +11,9 @@ Run `npm install`, then `npm run dev`. Open the local address printed by the ser
 - `app/page.tsx`: landing page content, section links, the FAQ, and the page's structured data (JSON-LD). The FAQ structured data is built from the same questions shown on the page, so edit them in one place.
 - `app/globals.css`: responsive layout, brand colors, and animations. All motion is skipped for visitors who prefer reduced motion.
 - `app/layout.tsx`: page title, description, canonical address, sharing metadata, and the Google Analytics tag (`G-QF35HEZTVE`), which only loads in production builds.
+- `app/privacy`, `app/terms`, `app/safety`, and `app/delete-account`: static, first-party legal and safety pages used by the mobile app and Google Play listing.
+- `app/legal-page.tsx`: shared accessible layout and navigation for the legal pages.
+- `app/site-footer.tsx`: shared footer with direct legal, safety, and account-deletion links.
 - `app/scroll-reveal.tsx`: reveals the children of any element marked `data-reveal` as they scroll into view, and resets them after they leave through the bottom of the screen so they replay.
 - `app/site.ts`: the production address used by the metadata, sitemap, and structured data.
 - `app/robots.ts` and `app/sitemap.ts`: generate `/robots.txt` and `/sitemap.xml`.

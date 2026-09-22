@@ -1,12 +1,11 @@
 import { ArrowDown, ArrowRight, Check, ChevronRight, Calculator, Layers3, Ruler, HardHat, Bookmark, SlidersHorizontal, Plus } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { AppPreview } from './app-preview';
 import logo from './images/homewise-logo.webp';
-import wordmark from './images/homewise-wordmark.webp';
 import { ScrollReveal } from './scroll-reveal';
 import { siteUrl } from './site';
 import { SiteHeader } from './site-header';
+import { SiteFooter } from './site-footer';
 
 const features = [
   { icon: Ruler, title: 'Start with your space.', text: 'Set your house dimensions and arrange rooms around the way you want to live.', tone: 'orange' },
@@ -69,6 +68,6 @@ export default function Home() {
       <section className="shell section" id="faq" aria-labelledby="faq-title"><div className="section-heading" data-reveal><span className="eyebrow">FREQUENTLY ASKED QUESTIONS</span><h2 id="faq-title">Good questions.<br /><span>Clearer answers.</span></h2></div><div className="faq-list" data-reveal>{faqs.map(({ question, answer }) => <details className="faq-item" key={question}><summary><h3>{question}</h3><span className="faq-icon"><Plus aria-hidden="true" /></span></summary><p>{answer}</p></details>)}</div></section>
       <section className="about-section shell section" id="about" aria-labelledby="about-title" data-reveal><div className="about-logo"><Image src={logo} alt="" width={82} height={86} unoptimized /></div><span className="eyebrow">BUILT FOR THE BEGINNING</span><h2 id="about-title">Your next chapter.<br /><span>A little more considered.</span></h2><p>HomeWise helps homeowners, students, and early-stage planners explore the possibilities of a one-storey home in the Philippines.</p><a className="pill-button" href="#hero-title">Back to the beginning <ArrowRight size={18} aria-hidden="true" /></a><div className="scope-note"><HardHat size={20} aria-hidden="true" /><p>Start with an estimate. Build with a professional.<br /><span>HomeWise provides preliminary estimates for one-storey homes on flat sites with standard soil and wind assumptions. Review your plans, prices, and site requirements with qualified professionals before construction.</span></p></div></section>
     </main>
-    <footer className="site-footer shell" data-reveal><div className="footer-brand"><Link href="/" aria-label="HomeWise home"><Image src={wordmark} alt="HomeWise" width={156} height={52} unoptimized /></Link><span>A wiser start to a place of your own.</span></div><nav aria-label="Footer navigation"><a href="#features">Features</a><a href="#how-it-works">How it works</a><a href="#faq">FAQ</a><a href="#about">About HomeWise</a></nav><div className="footer-bottom"><span>© {new Date().getFullYear()} HomeWise</span><span>Thoughtful planning. Better beginnings.</span></div></footer>
+    <SiteFooter />
   </>;
 }
